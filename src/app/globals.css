@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --secondary: #ff7f22;
+}
+.layout {
+  @apply max-w-[1280px] lg:max-w-[1300px] mx-auto;
+}
+
+.component-padding {
+  @apply lg:py-[80px] py-[75px] lg:px-4 px-6;
+}
+.flex-col-layout {
+  @apply flex flex-col lg:gap-20 gap-10;
+}
+
+.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
+.swiper-pagination-horizontal.swiper-pagination-bullets
+  .swiper-pagination-bullet {
+  background-color: var(--secondary);
+}
+.swiper-button-next:after,
+.swiper-rtl .swiper-button-prev:after,
+.swiper-button-prev:after,
+.swiper-rtl .swiper-button-next:after {
+  @apply hidden;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  @apply hidden;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+  height: 4px;
+
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: red;
+  border-radius: 4px;
+  max-height: 12px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: white;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: #d0d5dd;
+}
+
+ul,
+ol {
+  list-style: revert;
+  padding: 10px 35px !important;
+}
+
+table tr,
+td {
+  border: 1px solid #000;
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto;
+  display: block;
+}
+
+th,
+td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: center;
+  white-space: nowrap;
+}
