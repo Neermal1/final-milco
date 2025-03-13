@@ -1,13 +1,8 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { ICompanyData } from "@/app/interface/interface";
+import React from "react";
 
 const OurStory: React.FC = () => {
-  const [videoLink, setVideoLink] = useState<string | null>(null);
-
- 
-
   return (
     <div className="story-container">
       <h2
@@ -21,17 +16,21 @@ const OurStory: React.FC = () => {
         Our Story
       </h2>
 
-      {videoLink ? (
-        <video
-          className="story-video"
-          width="100%"
-          height="auto"
-          controls
-          src={videoLink}
-        />
-      ) : (
-        <p style={{ textAlign: "center", color: "#999" }}>Loading video...</p>
-      )}
+      <p
+        style={{
+          textAlign: "center",
+          color: "#333",
+          fontSize: "18px",
+          maxWidth: "800px",
+          margin: "0 auto",
+          lineHeight: "1.6",
+        }}
+      >
+        Welcome to our journey! Our company was founded with a vision to make a 
+        difference in the industry. Over the years, we have grown into a strong 
+        and innovative team dedicated to providing top-notch solutions and services. 
+        Join us as we continue to innovate and shape the future.
+      </p>
     </div>
   );
 };
