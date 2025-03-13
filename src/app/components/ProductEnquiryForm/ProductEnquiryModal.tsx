@@ -4,20 +4,18 @@ import { Modal } from "antd";
 import { useContext } from "react";
 
 const ProductEnquiryModal = () => {
-  const { openEnquiryModal, setEnquiryModal } = useContext(AntdContext);
+  const context = useContext(AntdContext);
+  if (!context) return null; // Ensure context exists
+
+  const { openEnquiryModal, setEnquiryModal } = context;
+
   return (
     <Modal
       open={openEnquiryModal}
-      onCancel={() => {
-        setEnquiryModal(!openEnquiryModal);
-      }}
-      footer={false}
+      onCancel={() => setEnquiryModal(false)}
+      footer={null}
     >
-      <ContactForm
-        data={{
-          bg_status: false,
-        }}
-      />
+      <ContactForm data={{ bg_status: false }} />
     </Modal>
   );
 };

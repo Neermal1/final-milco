@@ -6,6 +6,7 @@ import BlogList from "./pageComponents/home/BlogList";
 import Categories from "./pageComponents/home/Categories";
 import Intro from "./pageComponents/home/Intro";
 import Slider from "./pageComponents/home/Slider";
+import OurStory from "./pageComponents/home/OurStory";
 import TopProducts from "./pageComponents/home/TopProducts";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -55,6 +56,7 @@ export default async function IndexPage() {
       <Intro data={companyProfile} />
       <TopProducts product_data={topProducts} />
       <Categories category_data={category} />
+      <OurStory/>
       <NewsLetter />
       <BlogList blog_data={blogs} />
     </div>
