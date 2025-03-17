@@ -10,6 +10,7 @@ export interface IDefaultAntdContext {
   loading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
 export interface ISlider {
   data: ISliderData[];
 }
@@ -18,15 +19,18 @@ interface ISliderData {
   id: number;
   title: string;
   image_link: string;
+  video_link?: string; // ✅ Added video_link
 }
 
 export interface IProduct {
   product_data: IProductData[];
 }
+
 interface IProductData {
   name: string;
   product_category_id: string;
   image_link: string;
+  video_link?: string; // ✅ Added video_link
   description?: string;
   slug: string;
   id: number;
@@ -55,10 +59,12 @@ export interface IProductDetail {
 export interface ICategory {
   category_data: ICategoryData[];
 }
+
 export interface ICategoryData {
   name: string;
   slug: string;
   image_link: string;
+  video_link?: string; // ✅ Added video_link
   id: number;
 }
 
@@ -86,6 +92,7 @@ interface IBlogData {
   description: string;
   id: number;
   image_link: string;
+  video_link?: string; // ✅ Added video_link
   created_at: string;
 }
 
@@ -105,6 +112,7 @@ export interface ICard {
     name: string;
     product_category_id: string;
     image_link: string;
+    video_link?: string; // ✅ Added video_link
     description: string;
     slug: string;
   };
@@ -121,6 +129,7 @@ export interface ICompanyData {
 export interface IGalleryList {
   gallery_list_data: IGalleryListData[];
 }
+
 export interface IGalleryCollection {
   galleryCollection: {
     images: IGalleryListData[];
@@ -132,6 +141,7 @@ interface IGalleryListData {
   name: string;
   slug: string;
   image_link: string;
+  video_link?: string; // ✅ Added video_link
 }
 
 export interface ICompanyProfile {
@@ -155,6 +165,7 @@ export interface ICompanyProfile {
   footer_logo_link: string;
   favicon_link: string;
   image_link: string;
+  video_link?: string; // ✅ Added video_link
 }
 
 export interface ICustomerInfoContext {
@@ -185,6 +196,7 @@ export interface IHeader {
 export interface IHeaderMenu {
   headerItems: IHeaderItem[];
 }
+
 export interface IHeaderItem {
   name: string;
   subMenu?: ICategoryData[];
