@@ -56,7 +56,7 @@ export default async function IndexPage() {
       <Intro data={companyProfile} />
       <TopProducts product_data={topProducts} />
       <Categories category_data={category} />
-      <OurStory video_link="https://example.com/video.mp4" />
+      <OurStory data={companyProfile} />
       <NewsLetter />
       <BlogList blog_data={blogs} />
     </div>
