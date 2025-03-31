@@ -1,70 +1,65 @@
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from "next/link";  
+import { usePathname } from "next/navigation";  
+import { Popover } from "antd";  
+import { RxCaretDown } from "react-icons/rx";  
+import { IHeaderMenu } from "@/app/interface/interface";  
 
-//constants
+const capitalizeFirstLetter = (string: string) => {  
+  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();  
+};  
 
-//react icons
-import { RxCaretDown } from "react-icons/rx";
+const HeaderMenu = ({ headerItems }: IHeaderMenu) => {  
+  const pathname = usePathname();  
 
-//antd
-import { Popover } from "antd";
-import { IHeaderItem, IHeaderMenu } from "@/app/interface/interface";
+  return (  
+    <>  
+      {headerItems?.map((data, index) => {  
+        const link = data?.slug; // Base link for the header item  
 
-const HeaderMenu = ({ headerItems }: IHeaderMenu) => {
-  const pathname = usePathname();
+        // Create content for sub-menu  
+        const content = (  
+          <div>  
+            <div className="flex flex-col gap-2">  
+              {data?.subMenu?.map((subItem, subIndex) => (  
+                <Link  
+                  key={subIndex}  
+                  href={`${link}/${subItem?.slug}`}  
+                  className="text-[16px]" // Remove lowercase class to let capitalize take effect  
+                >  
+                  <div>{capitalizeFirstLetter(subItem?.name)}</div>  
+                </Link>  
+              ))}  
+            </div>  
+          </div>  
+        );  
 
-  return (
-    <>
-      {headerItems?.map((data, index) => {
-        const link = data?.slug;
-        const content = (
-          <div>
-            <div className="flex flex-col gap-2">
-              {data?.subMenu?.map((data, index: number) => {
-                return (
-                  <Link
-                    key={index}
-                    href={`${link}/${data?.slug}`}
-                    className="text-[16px] uppercase "
-                  >
-                    <div key={index}>{data?.name}</div>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        );
-        return (
-          <Popover
-            content={data?.subMenu && content}
-            key={index}
-            trigger="hover"
-          >
-            <Link
-              href={`${!data?.subMenu ? data?.slug : "#"}`}
-              key={index}
-              className={`lg:hover:bg-primary lg:hover:text-white flex px-2 items-center justify-center hover:cursor-pointer ${
-                (pathname === data?.slug ||
-                  pathname.startsWith(data?.slug + "/")) &&
-                "text-white bg-primary hover:cursor-pointer"
-              }`}
-            >
-              <div className="flex items-center hover:cursor-pointer uppercase  font-semibold">
-                <div>{data?.name}</div>
-                <div>
-                  {data?.subMenu && (
-                    <div>
-                      <RxCaretDown />
-                    </div>
-                  )}
-                </div>
-              </div>
-            </Link>
-          </Popover>
-        );
-      })}
-    </>
-  );
-};
+        return (  
+          <Popover  
+            content={data?.subMenu && content}  
+            key={index}  
+            trigger="hover"  
+          >  
+            <Link  
+              href={`${!data?.subMenu ? data?.slug : "#"}`}  
+              className={`lg:hover:bg-primary lg:hover:text-white flex px-2 items-center justify-center hover:cursor-pointer ${  
+                (pathname === data?.slug || pathname.startsWith(data?.slug + "/")) &&   
+                "text-white bg-primary"  
+              }`}  
+            >  
+              <div className="flex items-center font-semibold">  {/* Removed lowercase class */}  
+                <div>{capitalizeFirstLetter(data?.name)}</div>  
+                {data?.subMenu && (  
+                  <div>  
+                    <RxCaretDown />  
+                  </div>  
+                )}  
+              </div>  
+            </Link>  
+          </Popover>  
+        );  
+      })}  
+    </>  
+  );  
+};  
 
-export default HeaderMenu;
+export default HeaderMenu;  
