@@ -26,15 +26,16 @@ const CategoryDetail = ({ category_detail }: ICategoryDetail) => {
                   slug,
                   id,
                 } = product;
+
                 return (
                   <div key={id}>
                     <Card
                       data={{
-                        name,
-                        description,
-                        product_category_id,
-                        image_link,
-                        slug,
+                        name: name || "Unnamed Product",
+                        description: description || "No description available.",
+                        product_category_id: product_category_id ?? 0,
+                        image_link: image_link || "/default-product.jpg",
+                        slug: slug || "#",
                       }}
                     />
                   </div>
