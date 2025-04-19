@@ -31,7 +31,7 @@ const CategoryDetail = ({ category_detail }: ICategoryDetail) => {
                     <Card
                       data={{
                         name,
-                        description: "",
+                        description,
                         product_category_id,
                         image_link,
                         slug,
